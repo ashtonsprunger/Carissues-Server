@@ -1,18 +1,23 @@
 {
-  "name": "server",
+  "name": "carissues-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "server for Carissues",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./node_modules/http-server/bin/http-server"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Ashton Sprunger",
+  "license": "MIT",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "sequelize": "^6.3.5"
+    "http-server": "^0.12.3",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.5.0",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^4.44.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"
