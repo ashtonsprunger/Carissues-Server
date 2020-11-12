@@ -19,9 +19,9 @@ sequelize.authenticate().then(
   }
 );
 
-app.use("/", function (req, res) {
-  res.send("hi");
-});
+// app.use("/", function (req, res) {
+//   res.send("hi");
+// });
 
 app.use("/api/user", user);
 app.use("/api/unauth", unauth);
