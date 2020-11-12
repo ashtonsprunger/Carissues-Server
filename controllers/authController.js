@@ -62,6 +62,49 @@ router.put("/:id", (request, response) => {
   );
 });
 
+// router.put("/:id", (request, response) => {
+//   let id = request.params.id;
+//   let userId = request.user.id;
+
+//   if (request.user.admin) {
+//     Issue.update(
+//       {
+//         title: request.body.title,
+//         issue: request.body.issue,
+//         make: request.body.make,
+//         model: request.body.model,
+//         year: request.body.year,
+//       },
+//       { where: { id: id } }
+//     ).then(
+//       function updateSuccess(log) {
+//         response.json(request.body);
+//       },
+//       function updateError(error) {
+//         response.send(500, error.message);
+//       }
+//     );
+//   } else {
+//     Issue.update(
+//       {
+//         title: request.body.title,
+//         issue: request.body.issue,
+//         make: request.body.make,
+//         model: request.body.model,
+//         year: request.body.year,
+//       },
+//       { where: { userId: userId, id: id } }
+//     ).then(
+//       function updateSuccess(log) {
+//         response.json(request.body);
+//       },
+//       function updateError(error) {
+//         response.send(500, error.message);
+//       }
+//     );
+//   }
+// });
+
 //! Delete issue by id
 router.delete("/:id", (request, response) => {
   let id = request.params.id;
