@@ -21,6 +21,7 @@ sequelize.authenticate().then(
 
 app.use("/api/user", user);
 app.use("/api/unauth", unauth);
+
 app.use(require("./middleware/validate-session"));
 app.use("/api/auth", auth);
 
