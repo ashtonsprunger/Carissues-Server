@@ -23,9 +23,9 @@ sequelize.authenticate().then(
 //   res.send("hi");
 // });
 
-process.on("uncaughtException", function (error) {
-  console.log(error);
-});
+// process.on("uncaughtException", function (error) {
+//   console.log(error);
+// });
 
 app.use("/api/user", user);
 app.use("/api/unauth", unauth);
