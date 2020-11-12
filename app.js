@@ -19,15 +19,15 @@ sequelize.authenticate().then(
   }
 );
 
+app.use("/", function (req, res) {
+  res.send("hi");
+});
+
 app.use("/api/user", user);
 app.use("/api/unauth", unauth);
 
 app.use(require("./middleware/validate-session"));
 app.use("/api/auth", auth);
-
-app.use("/", function (req, res) {
-  res.send("hi");
-});
 
 app.listen(process.env.PORT, function () {
   console.log(`Carissues is listening on port ${process.env.PORT}`);
