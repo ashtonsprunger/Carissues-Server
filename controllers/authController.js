@@ -23,6 +23,16 @@ router.get("/", (request, response) => {
   );
 });
 
+//! Get current user
+router.get("/user", (request, response) => {
+  response.json({
+    name: request.user.name,
+    email: request.user.email,
+    id: request.user.id,
+    admin: request.user.admin,
+  });
+});
+
 //! Post an issue
 router.post("/:make/:model", (request, response) => {
   let body = request.body;
