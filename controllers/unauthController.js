@@ -8,7 +8,7 @@ let Fix = sequelize.import("../models/fix");
 //! Gets all issues and their fixes
 router.get("/", (request, response) => {
   Issue.findAll({
-    include: [{ model: "user" }, { model: "fixes", include: "user" }],
+    include: [{ model: user }, { model: fixes, include: "user" }],
   }).then(
     function findAllSuccess(data) {
       response.json(data);
