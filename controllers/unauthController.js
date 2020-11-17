@@ -10,8 +10,8 @@ let User = sequelize.import("../models/user");
 router.get("/", (request, response) => {
   Issue.findAll({
     include: [
-      { model: User },
-      { model: Fix, include: "user", attributes: ["name"] },
+      { model: User, attributes: "name" },
+      { model: Fix, include: "user" },
     ],
   }).then(
     function findAllSuccess(data) {
