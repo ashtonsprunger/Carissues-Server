@@ -9,6 +9,7 @@ sequelize.sync();
 let user = require("./controllers/userController");
 let unauth = require("./controllers/unauthController");
 let auth = require("./controllers/authController");
+let admin = require("./controllers/adminController");
 
 sequelize.authenticate().then(
   function () {
@@ -27,11 +28,17 @@ sequelize.authenticate().then(
 //   console.log(error);
 // });
 
+//! Unauthenticated routes
 app.use("/api/user", user);
 app.use("/api/unauth", unauth);
 
+//! Must be a user
 app.use(require("./middleware/validate-session"));
 app.use("/api/auth", auth);
+
+//! Must be an admin
+app.use(require("./middleware/admin-only"));
+app.use("/api/admin", admin);
 
 app.listen(process.env.PORT, function () {
   console.log(`Carissues is listening on port ${process.env.PORT}`);
