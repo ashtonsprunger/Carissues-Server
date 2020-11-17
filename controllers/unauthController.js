@@ -11,7 +11,7 @@ router.get("/", (request, response) => {
   Issue.findAll({
     include: [
       { model: User, attributes: ["name"] },
-      { model: Fix, include: "user" },
+      { model: Fix, include: [{ model: User, attributes: ["name"] }] },
     ],
   }).then(
     function findAllSuccess(data) {
