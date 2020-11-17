@@ -3,10 +3,17 @@ let router = express.Router();
 let sequelize = require("../db");
 let Issue = sequelize.import("../models/issue");
 let Fix = sequelize.import("../models/fix");
+let User = sequelize.import("../models/user");
 
 //! Gets all issues for current user
 router.get("/", (request, response) => {
-  Issue.findAll({ where: { userId: request.user.id }, include: "fixes" }).then(
+  Issue.findAll({
+    where: { userId: request.user.id },
+    include: [
+      { model: User, attributes: ["name"] },
+      { model: Fix, include: [{ model: User, attributes: ["name"] }] },
+    ],
+  }).then(
     function findSuccess(data) {
       response.json(data);
     },

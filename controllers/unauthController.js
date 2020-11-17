@@ -27,7 +27,10 @@ router.get("/", (request, response) => {
 router.get("/:make/:model", (request, response) => {
   Issue.findAll({
     where: { make: request.params.make, model: request.params.model },
-    include: "fixes",
+    include: [
+      { model: User, attributes: ["name"] },
+      { model: Fix, include: [{ model: User, attributes: ["name"] }] },
+    ],
   }).then(
     function findSuccess(data) {
       response.json(data);
@@ -42,7 +45,10 @@ router.get("/:make/:model", (request, response) => {
 router.get("/:make", (request, response) => {
   Issue.findAll({
     where: { make: request.params.make },
-    include: "fixes",
+    include: [
+      { model: User, attributes: ["name"] },
+      { model: Fix, include: [{ model: User, attributes: ["name"] }] },
+    ],
   }).then(
     function findSuccess(data) {
       response.json(data);
