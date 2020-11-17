@@ -9,7 +9,10 @@ let User = sequelize.import("../models/user");
 //! Gets all issues and their fixes
 router.get("/", (request, response) => {
   Issue.findAll({
-    include: [{ model: User }, { model: Fix, include: "user" }],
+    include: [
+      { model: User },
+      { model: Fix, include: "user", attributes: ["name"] },
+    ],
   }).then(
     function findAllSuccess(data) {
       response.json(data);
