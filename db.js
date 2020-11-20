@@ -13,6 +13,12 @@ const sequelize = new Sequelize(
 let User = sequelize.import("./models/user");
 let Issue = sequelize.import("./models/issue");
 let Fix = sequelize.import("./models/fix");
+let LikeFix = sequelize.import("./models/likeFix");
+
+Fix.hasMany(LikeFix);
+User.hasMany(LikeFix);
+LikeFix.belongsTo(Fix);
+LikeFix.belongsTo(User);
 
 Issue.belongsTo(User);
 User.hasMany(Issue);
