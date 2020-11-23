@@ -9,6 +9,7 @@ sequelize.sync();
 let user = require("./controllers/userController");
 let unauth = require("./controllers/unauthController");
 let auth = require("./controllers/authController");
+let like = require("./controllers/likeController");
 let admin = require("./controllers/adminController");
 
 sequelize.authenticate().then(
@@ -35,6 +36,7 @@ app.use("/api/unauth", unauth);
 //! Must be a user
 app.use(require("./middleware/validate-session"));
 app.use("/api/auth", auth);
+app.use("/api/like", like);
 
 //! Must be an admin
 app.use(require("./middleware/admin-only"));
