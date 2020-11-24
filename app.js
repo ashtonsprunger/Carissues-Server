@@ -39,7 +39,7 @@ app.use("/api/auth", auth);
 app.use("/api/like", like);
 
 //! Must be an admin
-app.use(require("./middleware/admin-only"));
+// app.use(require("./middleware/admin-only"));
 app.use("/api/admin", admin);
 
 app.listen(process.env.PORT, function () {
