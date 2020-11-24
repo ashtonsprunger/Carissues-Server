@@ -9,12 +9,12 @@ router.put("/:id", (request, response) => {
 
   Issue.update(
     {
-      // title: request.body.title,
-      // issue: request.body.issue,
-      // make: request.body.make,
-      // model: request.body.model,
-      // year: request.body.year,
-      title: "how ya doin",
+      title: request.body.title,
+      issue: request.body.issue,
+      make: request.body.make,
+      model: request.body.model,
+      year: request.body.year,
+      // title: "how ya doin",
     },
     { where: { id: id } }
   ).then(
