@@ -2,6 +2,7 @@ let express = require("express");
 let router = express.Router();
 let sequelize = require("../db");
 let Issue = sequelize.import("../models/issue");
+let Fix = sequelize.import("../models/fix");
 
 //! Update issue by id
 router.put("/:id", (request, response) => {
