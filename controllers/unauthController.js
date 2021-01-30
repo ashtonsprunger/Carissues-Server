@@ -12,7 +12,14 @@ router.post("/:name/:count", (request, response) => {
   Entry.create({
     name: request.params.name,
     count: request.params.count,
-  });
+  }).then(
+    function success(data) {
+      response.json(data);
+    },
+    function fail(error) {
+      response.send(500, error.message);
+    }
+  );
 });
 
 router.get("/speed/name/count", (request, response) => {
