@@ -1,3 +1,4 @@
+const { request, response } = require("express");
 let express = require("express");
 const { userInfo } = require("os");
 let router = express.Router();
@@ -5,6 +6,25 @@ let sequelize = require("../db");
 let Issue = sequelize.import("../models/issue");
 let Fix = sequelize.import("../models/fix");
 let User = sequelize.import("../models/user");
+let Entry = sequelize.import("../models/entry");
+
+router.post("/:name/:count", (request, response) => {
+  Entry.create({
+    name: request.params.name,
+    count: request.params.count,
+  });
+});
+
+router.get("/speed/name/count", (request, response) => {
+  Entry.findAll().then(
+    function findAllSuccess(data) {
+      response.json(data);
+    },
+    function findAllError(error) {
+      response.send(500, error.message);
+    }
+  );
+});
 
 //! Gets all issues and their fixes
 router.get("/", (request, response) => {

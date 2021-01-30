@@ -10,6 +10,11 @@ const sequelize = new Sequelize(
   }
 );
 
+// const sequelize = new Sequelize("Carissues", "postgres", "ashtonefa", {
+//   host: "localhost",
+//   dialect: "postgres",
+// });
+
 let User = sequelize.import("./models/user");
 let Issue = sequelize.import("./models/issue");
 let Fix = sequelize.import("./models/fix");
