@@ -22,6 +22,33 @@ router.post("/:name/:count", (request, response) => {
   );
 });
 
+router.put("/:id", (request, response) => {
+  Entry.update(
+    {
+      name: request.body.name,
+    },
+    { where: { id: request.params.id } }
+  ).then(
+    function success(data) {
+      response.json(data);
+    },
+    function fail(error) {
+      response.send(500, error.message);
+    }
+  );
+});
+
+router.delete("/:id", (request, response) => {
+  Entry.destroy({ where: { id: request.params.id } }).then(
+    function success(data) {
+      response.json(data);
+    },
+    function fail(error) {
+      response.send(500, error.message);
+    }
+  );
+});
+
 router.get("/speed/name/count", (request, response) => {
   Entry.findAll().then(
     function findAllSuccess(data) {
